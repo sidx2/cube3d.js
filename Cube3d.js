@@ -3,6 +3,7 @@ class Cube3d {
         this.x = x;
         this.y = y;
         this.sideLength = sideLength;
+        this.distance = 400;
         this.ctx = ctx;
         this.lineColor = lineColor;
 
@@ -20,11 +21,14 @@ class Cube3d {
     }
 
     _drawLine(a, b) {
+        this.ctx.lineWidth = 1.5;
         this.ctx.strokeStyle = this.lineColor;
         this.ctx.beginPath();
 
-        this.ctx.moveTo(this.x + a[0], this.y - a[1]);
-        this.ctx.lineTo(this.x + b[0], this.y - b[1]);
+        let scale = 100;
+
+        this.ctx.moveTo(this.x + (a[0] * scale), this.y - (a[1] * scale));
+        this.ctx.lineTo(this.x + (b[0] * scale), this.y - (b[1] * scale));
 
         this.ctx.stroke();
     }
@@ -54,10 +58,16 @@ class Cube3d {
     }
 
     draw() {
+        let projected = Array(8);
+        for (let i = 0; i < 8; i++) {
+            let z = 1 / (this.distance - (this.vertices[i][2]));
+            projected[i] = [z * this.vertices[i][0], z * this.vertices[i][1]];
+        }
+
         for (let i = 0; i < 4; i++) {
-            this._drawLine(this.vertices[i], this.vertices[(i + 1) % 4]);
-            this._drawLine(this.vertices[i], this.vertices[i + 4]);
-            this._drawLine(this.vertices[i + 4], this.vertices[(i + 5) % 4 + 4]);
+            this._drawLine(projected[i], projected[(i + 1) % 4]);
+            this._drawLine(projected[i], projected[i + 4]);
+            this._drawLine(projected[i + 4], projected[(i + 5) % 4 + 4]);
         }
     }
 
