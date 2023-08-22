@@ -5,7 +5,7 @@ This code demonstrates how to create and rotate a 3D cube within a 2D canvas usi
 This code example showcases the creation and rotation of a 3D cube in a 2D canvas. The cube is defined using a custom Cube3d class, and it is positioned at the center of the canvas. The cube continuously rotates in all three dimensions, resulting in an engaging visual effect.
 
 ## Screenshots
-![Screenshot](https://drive.google.com/uc?export=view&id=1I6h5dAhk9Qc215IRZzCuCn1U3PzjDeCa)
+![Screenshot](https://drive.google.com/uc?export=view&id=1yECC4PGZXt6dtL27wc9h6Vx-QeEcCUJU)
 
 ## Features and Customization
 - The cube is positioned at the center of the canvas, creating a visually pleasing effect.
